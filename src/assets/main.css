@@ -11,8 +11,14 @@ main .container{max-width: 720px; width: 100%;}
 main p{text-align: left;}
 main small{color:#bbb;}
 .box{position: relative; background-color: #fff; margin-top:15px; border:1px solid #e2e2e2; text-align: left; padding: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 2px 2px 4px #ccc;}
-.box i{margin-left:5px; color: #bbb;}
+.box i{margin-left:5px; color: #bbb; cursor: pointer;}
+.box i.active{color:#ff005d}
 
 /*filter buttons*/
 .data-area{display: flex; justify-content: space-between; align-items: center; padding: 0px; margin-top:15px}
 .data-area button{height: 35px; margin-left:5px; padding:0 15px; cursor: pointer; border:1px  solid #e2e2e2; background-color: #ddd;}
+
+/*add diary*/
+.box .form-group{width: 100%; text-align: right;}
+.box textarea{box-sizing: border-box; height: 100px; width: 100%; border:1px solid #e2e2e2; padding:15px;}
+.box button{height: 35px; border:1px solid #e2e2e2; padding: 5px 15px; margin-top:10px; background-color: #ffd356; color: #333;}
