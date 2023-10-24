@@ -33,7 +33,7 @@ export default {
                     isFav: false
                 })
             } 
-            newDiary.value = null;           
+            newDiary.value = null; 
         }
         
         
