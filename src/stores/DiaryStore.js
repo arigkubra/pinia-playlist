@@ -53,6 +53,11 @@ export const useDiaryStore = defineStore("diaryStore", {
             const res = await fetch("http://localhost:3000/diary/" + id, {
                 method: 'DELETE'
             }).catch((err)=>{console.log(err)})
+        },
+
+        editDiary(id, newContent){
+            const diary = this.diary.find(gunluk => gunluk.id === id)
+            diary.diary = newContent
         }
     }
 })

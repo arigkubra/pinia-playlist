@@ -4,6 +4,18 @@
       "id": 1,
       "diary": "deneme 1\n",
       "date": "16.10.2023",
+      "isFav": true
+    },
+    {
+      "id": 3,
+      "diary": "asasa",
+      "date": "19.10.2023",
+      "isFav": false
+    },
+    {
+      "id": 4,
+      "diary": "asasa",
+      "date": "19.10.2023",
       "isFav": false
     }
   ]

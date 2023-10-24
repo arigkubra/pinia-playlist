@@ -14,29 +14,19 @@ import { ref } from 'vue';
 import { useDiaryStore } from '../stores/DiaryStore';
 
 export default {
-    setup(){
+    props:[
+        'id', 'diary' 
+    ],
+    setup(props){
         const diaryStore = useDiaryStore()
-        const newDiary = ref('')
-
-        const currentDate = () => {
-            const current = new Date()
-            const date = current.getDate() + "." + (current.getMonth()+1) + "." + current.getFullYear()
-            return date
-        }
+        const newDiary = ref(props.diary)
+        
 
         const sendForm = () => {
             if (newDiary.value.length > 0){
-                diaryStore.newDiary({
-                    id: diaryStore.diary.length + 1,
-                    diary: newDiary.value,
-                    date: currentDate(),
-                    isFav: false
-                })
-            } 
-            newDiary.value = null;           
+                diaryStore.editDiary(props.id, newDiary.value)
+            }            
         }
-        
-        
 
         return { sendForm, newDiary }
     }

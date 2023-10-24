@@ -1,11 +1,15 @@
 <template>
   <div class="box">
       <div>
-          <p>{{ gunluk.diary }}</p>
+          <div>{{ sirasi }}</div>
+          <p v-if="!editMode">{{ gunluk.diary }}</p>
+          <edit-gunluk v-else :id="gunluk.id" :diary="gunluk.diary"> </edit-gunluk>
+          
           <small class="date">{{ gunluk.date }}</small>
       </div>
       <div>
           <i class="material-icons" :class="{active : gunluk.isFav}" @click="diaryStore.toggleFav(gunluk.id)">favorite</i>
+          <i class="material-icons" @click="editMode = !editMode ">edit</i>
           <i class="material-icons" @click="diaryStore.deleteDiary(gunluk.id)">delete</i>
       </div>
   </div>
@@ -13,13 +17,18 @@
 
 <script>
 import { useDiaryStore } from '../stores/DiaryStore';
+import { ref } from 'vue';
+import editGunluk from './edit-gunluk.vue';
 
 export default {
-  props: ['gunluk'],
+  components: {
+    "edit-gunluk": editGunluk,
+  },
+  props: ['gunluk', 'sirasi'],
   setup(){
       const diaryStore = useDiaryStore()
-
-      return { diaryStore }
+      const editMode = ref(false) 
+      return { diaryStore, editMode }
   }
 }
 </script>
