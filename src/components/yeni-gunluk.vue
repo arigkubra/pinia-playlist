@@ -27,13 +27,13 @@ export default {
         const sendForm = () => {
             if (newDiary.value.length > 0){
                 diaryStore.newDiary({
-                    id: diaryStore.diary.length + 1,
+                    id: Date.now(),
                     diary: newDiary.value,
                     date: currentDate(),
                     isFav: false
                 })
             } 
-            newDiary.value = null; 
+            newDiary.value = ""; 
         }
         
         

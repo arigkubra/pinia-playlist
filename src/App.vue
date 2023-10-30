@@ -23,7 +23,7 @@
       <div  v-if="filter === 'all'">
           <div class="gunluk-listesi" v-for="(gunluk, index) in diary" :key="index">
             
-            <gunluk-details :gunluk="gunluk" :sirasi="index"></gunluk-details>
+            <gunluk-details :gunluk="gunluk"  :sirasi="index"></gunluk-details>
             
         </div>
         
@@ -31,7 +31,7 @@
       <p>Sadece Beğendiğim Günlüklerim</p>
       <div v-if="filter === 'favs'">
         <div class="gunluk-listesi" v-for="(gunluk, index) in favs" :key="index">
-          <gunluk-details :gunluk="gunluk" :sirasi="index"></gunluk-details>
+          <gunluk-details :gunluk="gunluk"  :sirasi="index"></gunluk-details>
         </div>
       </div>
 
@@ -52,6 +52,7 @@ export default {
     "gunluk-details": GunlukDetails,
     "yeni-gunluk": NewDiary,
   },
+  
   setup() {
     const gunlukStore = useDiaryStore();
 

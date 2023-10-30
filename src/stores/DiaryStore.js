@@ -3,7 +3,8 @@ import { defineStore } from 'pinia'
 export const useDiaryStore = defineStore("diaryStore", {
     state: () => ({
         diary: [],
-        loading: false
+        loading: false,
+        editMode: false,
     }),
     getters: {
         favs(){
@@ -19,6 +20,15 @@ export const useDiaryStore = defineStore("diaryStore", {
         }
     },
     actions: {
+        async $reset(){
+            this.diary = []
+            const res = await fetch("http://localhost:3000/diary")
+            const data = await res.json()
+            data.forEach( async (diary, index) => {
+                await fetch("http://localhost:3000/diary/" + diary.id, {method: "DELETE" })
+            } )
+            
+        },
         async getDiary(){
             this.loading = true
             const res = await fetch("http://localhost:3000/diary")
@@ -58,6 +68,7 @@ export const useDiaryStore = defineStore("diaryStore", {
         editDiary(id, newContent){
             const diary = this.diary.find(gunluk => gunluk.id === id)
             diary.diary = newContent
-        }
+        },
+        
     }
 })
